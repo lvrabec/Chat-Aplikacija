@@ -13,8 +13,12 @@ class Input extends React.Component{
     }
     handleSubmitMessage = event=>{
         event.preventDefault();
-        this.setState({text:""})
+        if (this.state.text === ""){
+            alert("Please enter the text in the message field!")
+        }
+        else
         this.props.onSendMessage(this.state.text);
+        this.setState({text:""});
     }
 
     render(){

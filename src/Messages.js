@@ -10,7 +10,6 @@ randomid(){
 }
 
 
-
 renderMessage(message) {
         const {member,text} = message;
         const{currentMember} = this.props;

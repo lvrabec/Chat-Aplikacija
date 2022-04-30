@@ -1,8 +1,6 @@
-import logo from './logo.svg';
 import Messages from './Messages';
 import Input from './Input';
 import './App.css';
-import { render } from '@testing-library/react';
 import React from 'react';
 
 
@@ -11,7 +9,7 @@ function randomName() {
   const nouns = ["waterfall", "river", "breeze", "moon", "rain", "wind", "sea", "morning", "snow", "lake", "sunset", "pine", "shadow", "leaf", "dawn", "glitter", "forest", "hill", "cloud", "meadow", "sun", "glade", "bird", "brook", "butterfly", "bush", "dew", "dust", "field", "fire", "flower", "firefly", "feather", "grass", "haze", "mountain", "night", "pond", "darkness", "snowflake", "silence", "sound", "sky", "shape", "surf", "thunder", "violet", "water", "wildflower", "wave", "water", "resonance", "sun", "wood", "dream", "cherry", "tree", "fog", "frost", "voice", "paper", "frog", "smoke", "star"];
   const adjective = adjectives[Math.floor(Math.random() * adjectives.length)];
   const noun = nouns[Math.floor(Math.random() * nouns.length)];
-  return adjective + noun;
+  return adjective +"_"+ noun;
 }
 
 function randomColor() {
@@ -21,16 +19,22 @@ function randomColor() {
 
 
 class  App extends React.Component {
-
+  state = {
+    messages: [],
+    member: {
+      username: randomName(),
+      color: randomColor()
+    }
+  }
   constructor() {
     super();
-    this.state = {
-      messages: [],
-      member: {
-        username: randomName(),
-        color: randomColor()
-      }
-    }
+    // this.state = {
+    //   messages: [],
+    //   member: {
+    //     username: randomName(),
+    //     color: randomColor()
+    //   }
+    // }
     this.drone = new window.Scaledrone("4HhFdAuhX4UzFg2g", {
       data: this.state.member
     });
@@ -49,16 +53,12 @@ class  App extends React.Component {
     room.on('data', (data, member) => {
       const messages = this.state.messages;
       messages.push({member, text: data});
-      this.setState({messages});
+      this.setState({messages:messages});
     });
   }
   
   onSendMessage = (message) => {
     const messages = this.state.messages
-    // messages.push({
-    //   text: message,
-    //   member: this.state.member
-    // });
     this.setState({messages: messages})
     this.drone.publish({
       room: "observable-room",
