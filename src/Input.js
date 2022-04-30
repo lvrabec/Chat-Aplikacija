@@ -14,7 +14,7 @@ class Input extends React.Component{
     handleSubmitMessage = event=>{
         event.preventDefault();
         if (this.state.text === ""){
-            alert("Please enter the text in the message field!")
+            alert("Please enter the text in the message field!");
         }
         else
         this.props.onSendMessage(this.state.text);
@@ -25,7 +25,7 @@ class Input extends React.Component{
         return(
             <div>
                 <form onSubmit={this.handleSubmitMessage}>
-                    <input type="text" autoFocus={true} onChange={this.handleInputChange} value={this.state.text}></input>
+                    <input type="text" autoFocus={true} onChange={this.handleInputChange} value={this.state.text} placeholder="Enter text here"></input>
                     <button>Send!</button>
                 </form>
             </div>
