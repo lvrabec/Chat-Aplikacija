@@ -26,7 +26,7 @@ class  App extends React.Component {
       color: randomColor()
     }
   }
-  constructor() {
+  constructor() { 
     super();
     // this.state = {
     //   messages: [],
