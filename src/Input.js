@@ -19,13 +19,14 @@ class Input extends React.Component{
         else
         this.props.onSendMessage(this.state.text);
         this.setState({text:""});
+        // console.log("text sent")
     }
 
     render(){
         return(
             <div>
                 <form onSubmit={this.handleSubmitMessage}>
-                    <input type="text" autoFocus={true} onChange={this.handleInputChange} value={this.state.text} placeholder="Enter text here"></input>
+                    <input type="text" autoFocus={true} onInput={this.handleInputChange} value={this.state.text} placeholder="Enter text here"></input>
                     <button>Send!</button>
                 </form>
             </div>

@@ -26,15 +26,8 @@ class  App extends React.Component {
       color: randomColor()
     }
   }
-  constructor() { 
-    super();
-    // this.state = {
-    //   messages: [],
-    //   member: {
-    //     username: randomName(),
-    //     color: randomColor()
-    //   }
-    // }
+
+  componentDidMount(){
     this.drone = new window.Scaledrone("4HhFdAuhX4UzFg2g", {
       data: this.state.member
     });

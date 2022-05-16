@@ -17,7 +17,7 @@ renderMessage(message) {
         const messageFromMe=  member.id === currentMember.id;
         const className= messageFromMe ? "Messages-message currentMember" : "Messages-message";
 
-        return(
+        return(            
             <li  key={index} className={className}>
                 <div className="avatar" style={{backgroundColor: member.clientData.color}}></div>
                 <div className="Message-content">
@@ -27,11 +27,11 @@ renderMessage(message) {
             </li>
         );
    
+     
     }
 
      
     
-
 
 
 render(){
@@ -39,10 +39,11 @@ render(){
     
     const {messages} =this.props;
 
+    // console.log("message rendered")
 
     return(
         <ul className="Messages-list">
-            {messages.map((m,id)=>this.renderMessage(m,id))}
+            {messages.map((m)=>this.renderMessage(m))}            
         </ul>
     )
 
